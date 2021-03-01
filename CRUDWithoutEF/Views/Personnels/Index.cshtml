@@ -1,0 +1,87 @@
+﻿@model System.Data.DataTable
+
+@{
+    ViewData["Title"] = "List of Personnels";
+}
+
+<div class="jumbotron" style="width:1350px;">
+    <h1 class="text-center">@ViewData["Title"]</h1>
+</div>
+
+<table class="table table-bordered">
+    <thead class="thead-light">
+        <tr>
+            <th>PID</th>
+            <th>Lname</th>
+            <th>Fname</th>
+            <th>Mname</th>
+            <th>Nickname</th>
+            <th>EmpType</th>
+            <th>ARank</th>
+            <th>ABranch</th>
+            <th>Active</th>
+            <th>Email</th>
+            <th>DliHire</th>
+            <th>OfficePhone</th>
+            <th>Location1</th>
+            <th>Location2</th>
+            <th>AltOffSym</th>
+            <th><a asp-action="AddOrEdit">Create New</a></th>
+        </tr>
+    </thead>
+    <tbody>
+@for (int i=0;i<Model.Rows.Count;i++) {
+        <tr>
+            <td>
+                @Model.Rows[i]["Personnel_ID"]
+            </td>
+            <td>
+                @Model.Rows[i]["L_name"]
+            </td>
+            <td>
+                @Model.Rows[i]["F_name"]
+            </td>
+            <td>
+                @Model.Rows[i]["M_name"]
+            </td>
+            <td>
+                @Model.Rows[i]["Nickname"]
+            </td>
+            <td>
+                @Model.Rows[i]["Emp_Type"]
+            </td>
+            <td>
+                @Model.Rows[i]["A_Rank"]
+            </td>
+            <td>
+                @Model.Rows[i]["A_Branch"]
+            </td>
+            <td>
+                @Model.Rows[i]["Active"]
+            </td>
+            <td>
+                @Model.Rows[i]["Email"]
+            </td>
+            <td>
+                @Model.Rows[i]["Dli_Hire"]
+            </td>
+            <td>
+                @Model.Rows[i]["Office_Phone"]
+            </td>
+            <td>
+                @Model.Rows[i]["Location_1"]
+            </td>
+            <td>
+                @Model.Rows[i]["Location_2"]
+            </td>
+            <td>
+                @Model.Rows[i]["Alt_Office_Symbol"]
+            </td>
+            <td>
+                <a asp-action="AddOrEdit" asp-route-id="@Model.Rows[i]["Personnel_ID"]">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@Model.Rows[i]["Personnel_ID"]">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
