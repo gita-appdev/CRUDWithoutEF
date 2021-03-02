@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gitan\\source\\repos\\CRUDWithoutEF\\CRUDWithoutEF\\CRUDWithoutEF.csproj": {}
+    "C:\\Users\\sabrina.alonso\\Source\\Repos\\CRUDWithoutEF\\CRUDWithoutEF\\CRUDWithoutEF.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gitan\\source\\repos\\CRUDWithoutEF\\CRUDWithoutEF\\CRUDWithoutEF.csproj": {
+    "C:\\Users\\sabrina.alonso\\Source\\Repos\\CRUDWithoutEF\\CRUDWithoutEF\\CRUDWithoutEF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gitan\\source\\repos\\CRUDWithoutEF\\CRUDWithoutEF\\CRUDWithoutEF.csproj",
+        "projectUniqueName": "C:\\Users\\sabrina.alonso\\Source\\Repos\\CRUDWithoutEF\\CRUDWithoutEF\\CRUDWithoutEF.csproj",
         "projectName": "CRUDWithoutEF",
-        "projectPath": "C:\\Users\\gitan\\source\\repos\\CRUDWithoutEF\\CRUDWithoutEF\\CRUDWithoutEF.csproj",
-        "packagesPath": "C:\\Users\\gitan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gitan\\source\\repos\\CRUDWithoutEF\\CRUDWithoutEF\\obj\\",
+        "projectPath": "C:\\Users\\sabrina.alonso\\Source\\Repos\\CRUDWithoutEF\\CRUDWithoutEF\\CRUDWithoutEF.csproj",
+        "packagesPath": "C:\\Users\\sabrina.alonso\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sabrina.alonso\\Source\\Repos\\CRUDWithoutEF\\CRUDWithoutEF\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\gitan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sabrina.alonso\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -77,7 +80,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

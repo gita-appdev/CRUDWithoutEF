@@ -1,10 +1,10 @@
 ﻿@model System.Data.DataTable
 
 @{
-    ViewData["Title"] = "List of Personnels";
+    ViewData["Title"] = "List of Personnel";
 }
 
-<div class="jumbotron" style="width:1350px;">
+<div class="jumbotron">
     <h1 class="text-center">@ViewData["Title"]</h1>
 </div>
 
@@ -12,20 +12,20 @@
     <thead class="thead-light">
         <tr>
             <th>PID</th>
-            <th>Lname</th>
-            <th>Fname</th>
-            <th>Mname</th>
-            <th>Nickname</th>
+            <th>Last Name</th>
+            <th>First Name</th>
+            @*<th>Mname</th>
+            <th>Nickname</th>*@
             <th>EmpType</th>
-            <th>ARank</th>
-            <th>ABranch</th>
+            @*<th>ARank</th>
+            <th>ABranch</th>*@
             <th>Active</th>
             <th>Email</th>
-            <th>DliHire</th>
+            @*<th>DliHire</th>
             <th>OfficePhone</th>
             <th>Location1</th>
             <th>Location2</th>
-            <th>AltOffSym</th>
+            <th>AltOffSym</th>*@
             <th><a asp-action="AddOrEdit">Create New</a></th>
         </tr>
     </thead>
@@ -41,28 +41,28 @@
             <td>
                 @Model.Rows[i]["F_name"]
             </td>
-            <td>
+            @*<td>
                 @Model.Rows[i]["M_name"]
             </td>
             <td>
                 @Model.Rows[i]["Nickname"]
-            </td>
+            </td>*@
             <td>
                 @Model.Rows[i]["Emp_Type"]
             </td>
-            <td>
+            @*<td>
                 @Model.Rows[i]["A_Rank"]
             </td>
             <td>
                 @Model.Rows[i]["A_Branch"]
-            </td>
+            </td>*@
             <td>
                 @Model.Rows[i]["Active"]
             </td>
             <td>
                 @Model.Rows[i]["Email"]
             </td>
-            <td>
+            @*<td>
                 @Model.Rows[i]["Dli_Hire"]
             </td>
             <td>
@@ -76,7 +76,7 @@
             </td>
             <td>
                 @Model.Rows[i]["Alt_Office_Symbol"]
-            </td>
+            </td>*@
             <td>
                 <a asp-action="AddOrEdit" asp-route-id="@Model.Rows[i]["Personnel_ID"]">Edit</a> |
                 <a asp-action="Delete" asp-route-id="@Model.Rows[i]["Personnel_ID"]">Delete</a>
