@@ -62,25 +62,66 @@ namespace CRUDWithoutEF.Controllers
                     cmd.Parameters.AddWithValue("@Personnel_ID", personnel.Personnel_ID);
                     cmd.Parameters.AddWithValue("@L_Name", personnel.Lname);
                     cmd.Parameters.AddWithValue("@F_Name", personnel.Fname);
-                    cmd.Parameters.AddWithValue("@M_Name", personnel.Mname);
-                    cmd.Parameters.AddWithValue("@Nickname", personnel.Nickname);
+
+                    if (string.IsNullOrEmpty(personnel.Mname))
+                        cmd.Parameters.AddWithValue("@M_Name", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@M_Name", personnel.Mname);
+                    if (string.IsNullOrEmpty(personnel.Nickname))
+                        cmd.Parameters.AddWithValue("@Nickname", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@Nickname", personnel.Nickname);
+
                     cmd.Parameters.AddWithValue("@Emp_Type", personnel.EmpType);
-                    cmd.Parameters.AddWithValue("@A_Rank", personnel.ARank);
-                    cmd.Parameters.AddWithValue("@A_Branch", personnel.ABranch);
+
+                    if (string.IsNullOrEmpty(personnel.ARank))
+                        cmd.Parameters.AddWithValue("@A_Rank", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@A_Rank", personnel.ARank);
+                    if (string.IsNullOrEmpty(personnel.ABranch))
+                        cmd.Parameters.AddWithValue("@A_Branch", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@A_Branch", personnel.ABranch);
+
                     cmd.Parameters.AddWithValue("@Active", personnel.Active);
-                    cmd.Parameters.AddWithValue("@Email", personnel.Email);
+
+                    if (string.IsNullOrEmpty(personnel.Email))
+                        cmd.Parameters.AddWithValue("@Email", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@Email", personnel.Email);
+
                     cmd.Parameters.AddWithValue("@DLI_Hire", personnel.DliHire);
-                    cmd.Parameters.AddWithValue("@Office_Phone", personnel.OfficePhone);
-                    cmd.Parameters.AddWithValue("@Location_1", personnel.Location1);
-                    cmd.Parameters.AddWithValue("@Location_2", personnel.Location2);
-                    cmd.Parameters.AddWithValue("@Alt_Office_Symbol", personnel.AltOfficeSymbol);
+
+                    if (string.IsNullOrEmpty(personnel.OfficePhone))
+                        cmd.Parameters.AddWithValue("@Office_Phone", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@Office_Phone", personnel.OfficePhone);
+                    if (string.IsNullOrEmpty(personnel.Location1.ToString()))
+                        cmd.Parameters.AddWithValue("@Location_1", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@Location_1", personnel.Location1);
+                    if (string.IsNullOrEmpty(personnel.Location2.ToString()))
+                        cmd.Parameters.AddWithValue("@Location_2", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@Location_2", personnel.Location2);
+                    if (string.IsNullOrEmpty(personnel.AltOfficeSymbol.ToString()))
+                        cmd.Parameters.AddWithValue("@Alt_Office_Symbol", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@Alt_Office_Symbol", personnel.AltOfficeSymbol);
+
                     cmd.ExecuteNonQuery();
                 }
                 return RedirectToAction(nameof(Index));
             }
             return View();
         }
-
+        public string CheckNullValue(string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return DBNull.Value.ToString();
+            else
+                return value;
+        }
         // GET: Personnels/Delete/5
         public IActionResult Delete(int? id)
         {
@@ -117,7 +158,7 @@ namespace CRUDWithoutEF.Controllers
                 adapter.Fill(dtbl);
                 if (dtbl.Rows.Count == 1)
                 {
-                    personnel.Personnel_ID = Convert.ToInt32( dtbl.Rows[0]["Personnel_ID"].ToString());
+                    personnel.Personnel_ID = Convert.ToInt32(dtbl.Rows[0]["Personnel_ID"].ToString());
                     personnel.Lname = dtbl.Rows[0]["L_Name"].ToString();
                     personnel.Fname = dtbl.Rows[0]["F_Name"].ToString();
                     personnel.Mname = dtbl.Rows[0]["M_Name"].ToString();
@@ -125,18 +166,18 @@ namespace CRUDWithoutEF.Controllers
                     personnel.EmpType = dtbl.Rows[0]["Emp_Type"].ToString();
                     personnel.ARank = dtbl.Rows[0]["A_Rank"].ToString();
                     personnel.ABranch = dtbl.Rows[0]["A_Rank"].ToString();
-                    personnel.Active = Convert.ToBoolean( dtbl.Rows[0]["Active"].ToString());
+                    personnel.Active = Convert.ToBoolean(dtbl.Rows[0]["Active"].ToString());
                     personnel.Email = dtbl.Rows[0]["Email"].ToString();
                     personnel.DliHire = Convert.ToDateTime(dtbl.Rows[0]["DLI_Hire"].ToString());
                     personnel.OfficePhone = dtbl.Rows[0]["Office_Phone"].ToString();
-                    personnel.Location1 = Convert.ToInt32(dtbl.Rows[0]["Location_1"].ToString());
-                    personnel.Location2 = Convert.ToInt32(dtbl.Rows[0]["Location_2"].ToString());
-                    personnel.AltOfficeSymbol = Convert.ToInt32(dtbl.Rows[0]["Alt_Office_Symbol"].ToString());
+                    personnel.Location1 = Convert.ToInt32((dtbl.Rows[0]["Location_1"].ToString() == String.Empty) ? null : dtbl.Rows[0]["Location_1"].ToString());
+                    personnel.Location2 = Convert.ToInt32((dtbl.Rows[0]["Location_2"].ToString() == String.Empty) ? null : dtbl.Rows[0]["Location_2"].ToString());
+                    personnel.AltOfficeSymbol = Convert.ToInt32((dtbl.Rows[0]["Alt_Office_Symbol"].ToString() == String.Empty) ? null : dtbl.Rows[0]["Alt_Office_Symbol"].ToString());
                 }
                 return personnel;
             }
         }
 
-       
+
     }
 }
