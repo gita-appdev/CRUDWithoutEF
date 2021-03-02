@@ -27,9 +27,9 @@ namespace CRUD.Models
 		[Required]
 		public DateTime DliHire { get; set; }
 		public string OfficePhone { get; set; }
-		public int Location1 { get; set; }
-		public int Location2 { get; set; }
-		public int AltOfficeSymbol { get; set; }
+		public int? Location1 { get; set; }
+		public int? Location2 { get; set; }
+		public int? AltOfficeSymbol { get; set; }
 		
     }
 }
