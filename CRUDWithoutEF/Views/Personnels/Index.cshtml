@@ -77,10 +77,11 @@
             <td>
                 @Model.Rows[i]["Alt_Office_Symbol"]
             </td>*@
-            <td>
-                <a asp-action="AddOrEdit" asp-route-id="@Model.Rows[i]["Personnel_ID"]">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@Model.Rows[i]["Personnel_ID"]">Delete</a>
-            </td>
+        <td>
+            <a asp-action="Details" asp-route-id="@Model.Rows[i]["Personnel_ID"]">Details</a> |
+            <a asp-action="AddOrEdit" asp-route-id="@Model.Rows[i]["Personnel_ID"]">Edit</a> |
+            <a asp-action="Delete" asp-route-id="@Model.Rows[i]["Personnel_ID"]">Delete</a>
+        </td>
         </tr>
 }
     </tbody>

@@ -338,3 +338,4 @@ C:\Users\sabrina.alonso\Source\Repos\CRUDWithoutEF\CRUDWithoutEF\obj\Debug\net5.
 C:\Users\sabrina.alonso\Source\Repos\CRUDWithoutEF\CRUDWithoutEF\obj\Debug\net5.0\ref\CRUDWithoutEF.dll
 C:\Users\sabrina.alonso\Source\Repos\CRUDWithoutEF\CRUDWithoutEF\obj\Debug\net5.0\CRUDWithoutEF.pdb
 C:\Users\sabrina.alonso\Source\Repos\CRUDWithoutEF\CRUDWithoutEF\obj\Debug\net5.0\CRUDWithoutEF.genruntimeconfig.cache
+C:\Users\sabrina.alonso\Source\Repos\CRUDWithoutEF\CRUDWithoutEF\obj\Debug\net5.0\Razor\Views\Personnels\Details.cshtml.g.cs
