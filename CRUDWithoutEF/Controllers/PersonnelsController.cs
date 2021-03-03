@@ -177,7 +177,85 @@ namespace CRUDWithoutEF.Controllers
                 return personnel;
             }
         }
+        // GET: Personnels/Details
+        public IActionResult Details(int? id)
+        {
+            Personnel personnel = new Personnel();
+            if (id > 0)
+                personnel = FetchPersonnelById(id);
+            return View(personnel);
+        }
 
+        // POST: Personnels/Details
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Details(int id, [Bind("Personnel_ID,Lname,Fname,Mname,Nickname,EmpType,ARank,ABranch,Active,Email,DliHire,OfficePhone,Location1,Location2,AltOfficeSymbol")] Personnel personnel)
+        {
+            if (ModelState.IsValid)
+            {
+                using (SqlConnection sqlConnection = new SqlConnection(_configuration.GetConnectionString("DefaultConnection")))
+                {
+                    sqlConnection.Open();
+                    SqlCommand cmd = new SqlCommand("spGetPersonnelById", sqlConnection);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Personnel_ID", personnel.Personnel_ID);
+                    cmd.Parameters.AddWithValue("@L_Name", personnel.Lname);
+                    cmd.Parameters.AddWithValue("@F_Name", personnel.Fname);
+
+                    if (string.IsNullOrEmpty(personnel.Mname))
+                        cmd.Parameters.AddWithValue("@M_Name", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@M_Name", personnel.Mname);
+                    if (string.IsNullOrEmpty(personnel.Nickname))
+                        cmd.Parameters.AddWithValue("@Nickname", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@Nickname", personnel.Nickname);
+
+                    cmd.Parameters.AddWithValue("@Emp_Type", personnel.EmpType);
+
+                    if (string.IsNullOrEmpty(personnel.ARank))
+                        cmd.Parameters.AddWithValue("@A_Rank", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@A_Rank", personnel.ARank);
+                    if (string.IsNullOrEmpty(personnel.ABranch))
+                        cmd.Parameters.AddWithValue("@A_Branch", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@A_Branch", personnel.ABranch);
+
+                    cmd.Parameters.AddWithValue("@Active", personnel.Active);
+
+                    if (string.IsNullOrEmpty(personnel.Email))
+                        cmd.Parameters.AddWithValue("@Email", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@Email", personnel.Email);
+
+                    cmd.Parameters.AddWithValue("@DLI_Hire", personnel.DliHire);
+
+                    if (string.IsNullOrEmpty(personnel.OfficePhone))
+                        cmd.Parameters.AddWithValue("@Office_Phone", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@Office_Phone", personnel.OfficePhone);
+                    if (string.IsNullOrEmpty(personnel.Location1.ToString()))
+                        cmd.Parameters.AddWithValue("@Location_1", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@Location_1", personnel.Location1);
+                    if (string.IsNullOrEmpty(personnel.Location2.ToString()))
+                        cmd.Parameters.AddWithValue("@Location_2", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@Location_2", personnel.Location2);
+                    if (string.IsNullOrEmpty(personnel.AltOfficeSymbol.ToString()))
+                        cmd.Parameters.AddWithValue("@Alt_Office_Symbol", DBNull.Value);
+                    else
+                        cmd.Parameters.AddWithValue("@Alt_Office_Symbol", personnel.AltOfficeSymbol);
+
+                    cmd.ExecuteNonQuery();
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
+        }
 
     }
 }
